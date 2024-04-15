@@ -1,8 +1,32 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family:'Roboto' Arial, sans-serif;
+  margin: 40px;
+  background: linear-gradient(to bottom,#f0f0f0,#ffffff,#e0e0e0);
 }
 
-a {
-  color: #00B7FF;
+h1 {
+  color: #333;
+  margin-left:40%;
+  margin-right: 25%;
+  font-size: 50px;
+
+}
+
+section {
+  background-color: #ffffff;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-left:15%;
+  margin-right:15%;
+}
+
+section:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+p{
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
