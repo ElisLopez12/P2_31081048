@@ -34,7 +34,7 @@ section {
 
 h2 {
   border-bottom: 2px solid #ffffff;
-  padding-bottom: 10px;
+  padding-bottom: 1vh;
 }
 
 ul {
@@ -43,7 +43,7 @@ ul {
 }
 
 li {
-  margin-top: 10px;
+  margin-top: 2vh;
 }
 
 a.contacto img {
@@ -54,10 +54,68 @@ a.contacto img {
 }
 
 a.contacto img:hover {
-  transform: scale(1.1);
+  transform: scale(1.5);
 }
 
 section#contact{
   text-align: center;
   margin-top: 10vh;
+}
+
+@media screen and (max-width:1200px){
+
+  div{
+    margin: 10vh 15vh;
+  }
+
+
+}
+
+@media screen and (max-width:992px){
+
+  div{
+    margin: 8vh 15vh;
+    padding: 6vh 10vh;
+  }
+
+}
+
+@media screen and (max-width:768px){
+  div{
+    padding: 5vh 8vh;
+  }
+}
+
+@media screen and (max-width:576px){
+  div{
+    margin: 3vh 3vh 3vh 10vh;
+    padding: 4vh 6vh;
+  }
+
+  a.contacto img {
+    width: 9%; 
+  }
+  
+
+
+}
+@media screen and (max-width:360px){
+  div{
+    padding: 2vh ;
+    margin: 2vh 3vh 2vh 6vh;
+    min-width: 60%;
+  }
+
+  p li{
+    font-size: 0.3em;
+  }
+
+  h2{
+    font-size: 1.3em;
+  }
+
+  a.contacto img {
+    width: 11%; 
+  }
+
 }
