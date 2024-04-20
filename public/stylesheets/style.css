@@ -1,19 +1,19 @@
 body {
   font-family:'Roboto' Arial, sans-serif;
   margin: 40px;
-  background: linear-gradient(to bottom,#f0f0f0,#ffffff,#e0e0e0);
+  background: #000;
 }
 
 h1 {
   color: #333;
-  margin-left:40%;
+  margin-left:38%;
   margin-right: 25%;
   font-size: 50px;
 
 }
 
 section {
-  background-color: #ffffff;
+  background-color: #f9f9f9;
   margin-top: 20px;
   padding: 20px;
   border-radius: 8px;
@@ -30,3 +30,5 @@ p{
   margin-top: 2%;
   margin-bottom: 2%;
 }
+
+
