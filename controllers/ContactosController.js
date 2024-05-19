@@ -1,19 +1,39 @@
-const ContactosModel= require('../models/ContactosModel');
+const ContactosModel = require("../models/ContactosModel");
 
-exports.agregarContacto=(req,res)=>{
-    const data={
-        email:req.body.email,
-        nombre:req.body.nombre,
-        comentario:req.body.comentario,
-        ip:req.ip,
-        fecha: new Date()
-    };
-    ContactosModel.create(data, (err,nuevoContacto)=>{
-        if(err){
-            res.status(500).send('Error al guardar el contacto');
-            return
-        }
-        res.status(200).send('Contacto guardado con exito');
-    });
-};
+class ContactosController {
+  constructor() {
+    this.contactosModel = new ContactosModel();
+    this.add = this.add.bind(this);
+  }
 
+  async add(req, res) {
+    // Validar los datos del formulario
+
+    const { email, name, mensaje } = req.body;
+
+    if (!email || !name || !mensaje) {
+      res.status(400).send("Faltan campos requeridos");
+      return;
+    }
+
+    // Guardar los datos del formulario
+    const ip = req.ip;
+    const fecha = new Date().toISOString();
+
+   
+    await this.contactosModel.crearContacto(email, name, mensaje, ip, fecha);
+
+    const contactos = await this.contactosModel.obtenerAllContactos();
+
+    console.log(contactos);
+
+    try{
+        res.status(200).send("Datos enviados exitosamente")
+    }catch{
+        res.status(500).send("Error al enviar los datos")
+    }
+
+    }
+}
+
+module.exports = ContactosController;

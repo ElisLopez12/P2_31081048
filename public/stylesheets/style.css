@@ -66,7 +66,11 @@ input, textarea, button{
   display: block;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  background-color: #4438384f;
+  color: #ffffff;
 }
+
+
 
 @media screen and (max-width:1200px){
 
@@ -106,9 +110,13 @@ input, textarea, button{
 
 }
 @media screen and (max-width:360px){
+  textarea{
+    margin-right: 3rem;
+  }
+  
   div{
     padding: 2vh ;
-    margin: 2vh 3vh 2vh 6vh;
+    margin: 2vh 3vh 2vh 6vh; 
     min-width: 60%;
   }
 

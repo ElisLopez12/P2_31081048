@@ -1,12 +1,14 @@
-var express = require('express');
-var router = express.Router();
-const contactosController=require('../controllers/ContactosController'); 
+const ContactosController = require("../controllers/ContactosController");
+const contactosController = new ContactosController();
 
-router.post('/agregarContacto', contactosController.agregarContacto);
+const indexController = require("../controllers/indexController")
+
+var express = require("express");
+var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express',nombre:'Elis lopez', cedula:3181048, seccion:2 });
-});
+router.get("/", indexController);
+
+router.post("/form-contacto", contactosController.add);
 
 module.exports = router;

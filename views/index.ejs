@@ -74,34 +74,22 @@
           <li>conocimientos avanzados en algoritmos</li>
         </ul>
       </section>
-      <section id="formularioDeContacto">
+      <section >
         <h2>¿Quieres contactarme?</h2>
-        <form action="/agregarContacto" method="post" onsubmit="return enviarFormulario()">
-          <input
-            type="text"
-            id="nombre"
-            name="nombre"
-            placeholder="nombre"
-            required
-          />
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="email"
-            required
-          />
-          <textarea
-            name="comentario"
-            id="comentario"
-            cols="30"
-            rows="10"
-            placeholder="dejame tu mensaje"
-            required
-          ></textarea>
-          <button type="submit" id="botonEnviar">Enviar</button>
-        </form>
-      </section>
+          <form id="contacto-form" method="post" action="form-contacto">
+            <input type="email" name="email" id="email" placeholder="email" required />
+            <input type="text" name="name" id="name" placeholder="nombre" required />
+            <textarea
+              required
+              name="mensaje"
+              id="mensaje"
+              cols="30"
+              rows="10"
+              placeholder="comentario"
+            ></textarea>
+            <button type="submit" id="submit-btn">Enviar</button>
+          </form>
+       </section>
       <section id="contact">
         <p>Redes sociales</p>
         <a
@@ -126,5 +114,22 @@
         </a>
       </section>
     </div>
+    <script>
+      document.getElementById('submit-btn').addEventListener('click', async () => {
+        const form = document.getElementById('contacto-form');
+        const formData = new FormData(form);
+      
+        const response = await fetch('/form-contacto', {
+          method: 'POST',
+          body: formData,
+        });
+      
+        if (response.ok) {
+          console.log('Formulario enviado con éxito');
+        } else {
+          console.error('Error al enviar el formulario');
+        }
+      });
+      </script>
   </body>
 </html>
