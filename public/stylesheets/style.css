@@ -6,7 +6,7 @@ body {
   padding: 0;
 }
 
-div {
+/* div {
   max-width: 50%;
   margin: 10vh 30vh;
   padding: 6vh 15vh ;
@@ -14,7 +14,7 @@ div {
   border-radius: 8px;
   box-shadow: 0 0 1vh rgba(255, 255, 255, 0.1); 
 }
-
+ */
 h1 {
   text-align: center;
   margin-bottom: 2vh;

@@ -8,6 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
   </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PWVG25Z6CR"></script>
@@ -84,7 +85,7 @@
       </section>
       <section >
         <h2>¿Quieres contactarme?</h2>
-          <form id="contacto-form" method="post" action="form-contacto">
+          <form id="contacto-form" method="post" action="form-contacto" onsubmit="return submitUserForm();">
             <input type="email" name="email" id="email" placeholder="email" required />
             <input type="text" name="name" id="name" placeholder="nombre" required />
             <textarea
@@ -95,7 +96,9 @@
               rows="10"
               placeholder="comentario"
             ></textarea>
-            <button type="submit" id="submit-btn">Enviar</button>
+            <div class="g-recaptcha" data-sitekey="6Ldf9e0pAAAAAM7bACRE92QknJtaUDmfFGzuNEs2" data-callback="verifyCaptcha"></div>
+            <div id="g-recaptcha-error"></div> 
+            <button type="submit" id="submit-btn" value="submit">Enviar</button>
           </form>
        </section>
       <section id="contact">
@@ -123,21 +126,38 @@
       </section>
     </div>
     <script>
-      document.getElementById('submit-btn').addEventListener('click', async () => {
-        const form = document.getElementById('contacto-form');
-        const formData = new FormData(form);
-      
-        const response = await fetch('/form-contacto', {
-          method: 'POST',
-          body: formData,
-        });
-      
-        if (response.ok) {
-          console.log('Formulario enviado con éxito');
-        } else {
-          console.error('Error al enviar el formulario');
-        }
-      });
-      </script>
+      var recaptcha_response='';
+function submitUserForm(){
+    if(recaptcha_response.length ==0){
+        document.getElementById('g-recaptcha-error').innerHTML='<span style="colo:red;">Resuelva el captcha antes de enviar</span>';
+        return false;
+    }
+    return true;
+}
+
+function verifyCaptcha(token){
+    recaptcha_response = token;
+    document.getElementById('g-recaptcha-error').innerHTML='';
+}
+    </script>
+
+<script>
+  document.getElementById('submit-btn').addEventListener('click', async () => {
+    const form = document.getElementById('contacto-form');
+    const formData = new FormData(form);
+  
+    const response = await fetch('/form-contacto', {
+      method: 'POST',
+      body: formData,
+    });
+  
+    if (response.ok) {
+      console.log('Formulario enviado con éxito');
+    } else {
+      console.error('Error al enviar el formulario');
+    }
+  });
+  </script>
+
   </body>
 </html>
