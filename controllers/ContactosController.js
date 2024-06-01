@@ -1,15 +1,17 @@
 const ContactosModel = require("../models/ContactosModel");
-
+const nodemailer= require ("nodemailer");
+const EMAIL_USER= process.env.SMTP_EMAIL_USER;
+const EMAIL_PASS= process.env.SMTP_EMAIL_PASS;
 
 class ContactosController {
   constructor() {
     this.contactosModel = new ContactosModel();
     this.add = this.add.bind(this);
-  }
+}
 
   async obtenerIp() {
     try {
-      const response = await fetch('https://api.ipify.org?format=json');
+      const response = await fetch ('https://api.ipify.org?format=json');
       const data = await response.json();
       return data.ip; 
     } catch (error) {
@@ -57,6 +59,32 @@ class ContactosController {
         res.status(500).send("Error al enviar los datos")
     }
 
+    let transporter = nodemailer.createTransport({
+      host: "smtp.hostinger.com",
+      port: 465, // Use port 465 for SSL
+      secure: true, // Set to true for SSL
+      auth: {
+        user: EMAIL_USER,
+        pass: EMAIL_PASS,
+      },
+    });
+
+    const sendTemplate = {
+      from: "EMAIL_USER", //correo de ejemplo
+      to: "elismiguellopezgonzalez@hotmail.com",
+      subject: "Registro nuevo en el formulario de contacto",
+      text: `Nombre: ${req.body.name} | Apellidos: ${
+        req.body.lastname
+      } | Email: ${req.body.email} | Date: ${new Date()}`,
+    };
+
+    transporter.sendMail(sendTemplate, (error, info) => {
+      if (error) {
+        console.error("Error al enviar el correo de notificacion:", error);
+      } else {
+        console.log("Notificacion enviada al correo:", info.response);
+      }
+    });      
     }
 }
 
