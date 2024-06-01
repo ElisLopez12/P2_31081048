@@ -22,7 +22,7 @@ class ContactosController {
     try {
       const response = await fetch('https://ipinfo.io/'+ip+'?token=8ce00bc8d3bc24');
       const data = await response.json();
-      return data.country_name; 
+      return data.country; 
     } catch (error) {
       console.error('Error al obtener el país:', error);
       return null; 
