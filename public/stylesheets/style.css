@@ -6,7 +6,7 @@ body {
   padding: 0;
 }
 
- div:not(.g-recaptcha) {
+ div{
   max-width: 50%;
   margin: 10vh 30vh;
   padding: 6vh 10vh ;
