@@ -1,7 +1,8 @@
-const ContactosModel = require("../models/ContactosModel");
+const ContactosModel = require ("../models/ContactosModel");
 const nodemailer= require ("nodemailer");
-const EMAIL_USER= process.env.SMTP_EMAIL_USER;
-const EMAIL_PASS= process.env.SMTP_EMAIL_PASS;
+require('dotenv').config();
+
+
 
 class ContactosController {
   constructor() {
@@ -59,23 +60,23 @@ class ContactosController {
         res.status(500).send("Error al enviar los datos")
     }
 
+
     let transporter = nodemailer.createTransport({
       host: "smtp.hostinger.com",
       port: 465, // Use port 465 for SSL
       secure: true, // Set to true for SSL
       auth: {
-        user: EMAIL_USER,
-        pass: EMAIL_PASS,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_EMAIL_PASS 
       },
     });
 
     const sendTemplate = {
-      from: "EMAIL_USER", //correo de ejemplo
-      to: "elismiguellopezgonzalez@hotmail.com",
+      from: process.env.SMTP_USER, //correo de ejemplo
+      to: [process.env.DESTINO1,process.env.DESTINO2,req.body.email],
       subject: "Registro nuevo en el formulario de contacto",
-      text: `Nombre: ${req.body.name} | Apellidos: ${
-        req.body.lastname
-      } | Email: ${req.body.email} | Date: ${new Date()}`,
+      text: `Nombre: ${req.body.name}\n\nEmail: ${req.body.email}\n\nMensaje: ${
+        req.body.mensaje}`,
     };
 
     transporter.sendMail(sendTemplate, (error, info) => {

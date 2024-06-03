@@ -96,7 +96,7 @@
               rows="10"
               placeholder="comentario"
             ></textarea>
-            <div class="g-recaptcha" data-sitekey="6Ldf9e0pAAAAAM7bACRE92QknJtaUDmfFGzuNEs2" data-callback="verifyCaptcha"></div>
+            <div class="g-recaptcha" data-size="compact" data-sitekey="6Ldf9e0pAAAAAM7bACRE92QknJtaUDmfFGzuNEs2" data-callback="verifyCaptcha"></div>
             <div id="g-recaptcha-error"></div> 
             <button type="submit" id="submit-btn" value="submit">Enviar</button>
           </form>
@@ -129,7 +129,7 @@
       var recaptcha_response='';
 function submitUserForm(){
     if(recaptcha_response.length ==0){
-        document.getElementById('g-recaptcha-error').innerHTML='<span style="colo:red;">Resuelva el captcha antes de enviar</span>';
+        document.getElementById('g-recaptcha-error').innerHTML='<span>Resuelva el captcha antes de enviar</span>';
         return false;
     }
     return true;

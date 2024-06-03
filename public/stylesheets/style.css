@@ -6,15 +6,16 @@ body {
   padding: 0;
 }
 
-/* div {
+ div:not(.g-recaptcha) {
   max-width: 50%;
   margin: 10vh 30vh;
-  padding: 6vh 15vh ;
+  padding: 6vh 10vh ;
   background-color: #1e1e1e;
   border-radius: 8px;
   box-shadow: 0 0 1vh rgba(255, 255, 255, 0.1); 
 }
- */
+
+
 h1 {
   text-align: center;
   margin-bottom: 2vh;
@@ -28,9 +29,9 @@ img[alt="yo"] {
   width: 35%;
 }
 
-section {
+ section {
   margin-bottom: 10%;
-}
+} 
 
 h2 {
   border-bottom: 2px solid #ffffff;
