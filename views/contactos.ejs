@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lista De Contactos</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body{
+        background-color: #1e1e1e ;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>TABLA DE CONTACTOS</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Nombre</th>
+        <th>Mensaje</th>
+        <th>Ip</th>
+        <th>Fecha</th>
+        <th>Id</th>
+        <th>Pais</th>
+      </tr>
+    </thead>  
+    <tbody>
+      <% data.forEach(function(row) {%>
+        <tr>
+          <td><%=row.email %></td>
+          <td><%=row.nombre %></td>
+          <td><%=row.mensaje %></td>
+          <td><%=row.ip %></td>
+          <td><%=row.fecha %></td>
+          <td><%=row.id %></td>
+          <td><%=row.pais %></td>
+        </tr>
+        <% }); %>
+     </tbody>
+    </table>
+  </body>
+  </html>
