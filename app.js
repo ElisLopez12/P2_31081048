@@ -14,7 +14,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var contactosRouter = require('./routes/contactos');
 var authRouter = require('./routes/auth'); // Nueva ruta para autenticación
-//kfifbfufbdid
+
 var app = express();
 
 // base de datos
